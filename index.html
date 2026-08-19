@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CEO Email Signature Generator</title>
+
+<style>
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    padding: 30px;
+    color: #35363A;
+}
+
+.generator {
+    max-width: 820px;
+    margin: auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+h2 {
+    margin-top: 0;
+    color: #35363A;
+}
+
+.intro {
+    margin-bottom: 25px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #35363A;
+}
+
+input,
+select {
+    font-size: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+.preview-label {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #35363A;
+}
+
+.preview-box {
+    border: 1px solid #ddd;
+    background: #ffffff;
+    padding: 25px;
+    overflow-x: auto;
+}
+
+.copy-button {
+    margin-top: 20px;
+    padding: 12px 22px;
+    background: #7B4198;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background: #62347a;
+}
+
+#copyMessage {
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #7B4198;
+}
+
+.note {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .field-full {
+        grid-column: auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="generator">
+
+<h2>CEO Email Signature Generator</h2>
+
+<p class="intro">
+Enter your information below. Your signature preview will update automatically.
+</p>
+
+<div class="form-grid">
+
+    <div class="field">
+        <label for="name">Full Name</label>
+        <input
+            type="text"
+            id="name"
+            placeholder="Your full name"
+            oninput="updateSignature()">
+    </div>
+
+    <div class="field">
+        <label for="title">Job Title</label>
+        <input
+            type="text"
+            id="title"
+            placeholder="Your job title"
+            oninput="updateSignature()">
+    </div>
+
+    <div class="field">
+        <label for="phone">Phone Number</label>
+        <input
+            type="text"
+            id="phone"
+            placeholder="(518) 272-6012"
+            oninput="updateSignature()">
+    </div>
+
+    <div class="field">
+        <label for="extension">Extension (optional)</label>
+        <input
+            type="text"
+            id="extension"
+            placeholder="239"
+            oninput="updateSignature()">
+    </div>
+
+    <div class="field">
+        <label for="email">Email</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="yourname@ceoempowers.org"
+            oninput="updateSignature()">
+    </div>
+
+    <div class="field">
+        <label for="location">Location</label>
+
+        <select
+            id="location"
+            onchange="updateSignature()">
+
+            <option value="">
+                Select your location
+            </option>
+
+            <option
+                value="Administration Building"
+                data-address="2331 Fifth Avenue, Troy, NY 12180">
+                Administration Building
+            </option>
+
+            <option
+                value="Community Resource Center and Bridge"
+                data-address="2328 Fifth Avenue, Troy, NY 12180">
+                Community Resource Center and Bridge
+            </option>
+
+            <option
+                value="Hoosick Falls FRC"
+                data-address="75 River Road, Hoosick Falls, NY 12090">
+                Hoosick Falls FRC
+            </option>
+
+            <option
+                value="Lansingburgh FRC"
+                data-address="754 4th Avenue, Troy, NY 12182">
+                Lansingburgh FRC
+            </option>
+
+            <option
+                value="Rensselaer FRC"
+                data-address="1641 3rd Street, Rensselaer, NY 12144">
+                Rensselaer FRC
+            </option>
+
+            <option
+                value="Schodack FRC"
+                data-address="24 New Road, Nassau, NY 12123">
+                Schodack FRC
+            </option>
+
+            <option
+                value="Troy Family Resource Center"
+                data-address="2347 Fifth Avenue, Troy, NY 12180">
+                Troy Family Resource Center
+            </option>
+
+        </select>
+    </div>
+
+</div>
+
+
+<div class="preview-label">
+Your Signature
+</div>
+
+
+<div class="preview-box">
+
+<div id="signature">
+
+<table
+    cellpadding="0"
+    cellspacing="0"
+    border="0"
+    style="
+        font-family: Arial, Helvetica, sans-serif;
+        color: #35363A;
+        border-collapse: collapse;
+    ">
+
+<tr>
+
+
+<!-- LEFT COLUMN: LOGO -->
+
+<td
+    style="
+        padding-right: 24px;
+        vertical-align: middle;
+        text-align: center;
+    ">
+
+    <a
+        href="https://www.ceoempowers.org"
+        target="_blank"
+        style="text-decoration:none;">
+
+        <img
+            src="https://www.ceoempowers.org/wp-content/uploads/2023/08/ceo-logo-circle.png"
+            alt="Commission on Economic Opportunity"
+            width="145"
+            style="
+                display:block;
+                width:145px;
+                max-width:145px;
+                height:auto;
+                border:0;
+            ">
+
+    </a>
+
+</td>
+
+
+<!-- DIVIDER -->
+
+<td
+    width="2"
+    style="
+        width:2px;
+        background-color:#7B4198;
+        font-size:1px;
+        line-height:1px;
+    ">
+    &nbsp;
+</td>
+
+
+<!-- RIGHT COLUMN -->
+
+<td
+    style="
+        padding-left:24px;
+        vertical-align:middle;
+        min-width:300px;
+    ">
+
+
+    <!-- NAME -->
+
+    <div
+        id="sigName"
+        style="
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:16px;
+            font-weight:bold;
+            color:#35363A;
+            line-height:21px;
+        ">
+        Your Name
+    </div>
+
+
+    <!-- TITLE -->
+
+    <div
+        id="sigTitle"
+        style="
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            color:#35363A;
+            line-height:18px;
+        ">
+        Your Job Title
+    </div>
+
+
+    <!-- SPACING -->
+
+    <div style="height:14px; line-height:14px;">
+        &nbsp;
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div
+        id="locationBlock"
+        style="
+            display:none;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:12px;
+            color:#35363A;
+            line-height:17px;
+        ">
+
+        <div
+            id="sigLocation"
+            style="
+                font-weight:bold;
+            ">
+        </div>
+
+        <div id="sigAddress"></div>
+
+    </div>
+
+
+    <!-- LOCATION SPACING -->
+
+    <div
+        id="locationSpacing"
+        style="
+            display:none;
+            height:12px;
+            line-height:12px;
+        ">
+        &nbsp;
+    </div>
+
+
+    <!-- PHONE -->
+
+    <div
+        style="
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            color:#35363A;
+            line-height:18px;
+        ">
+
+        <a
+            id="sigPhoneLink"
+            href="#"
+            style="
+                color:#35363A;
+                text-decoration:none;
+            ">
+
+            <span id="sigPhone">
+                (518) 272-6012
+            </span>
+
+            <span id="sigExtension"></span>
+
+        </a>
+
+    </div>
+
+
+    <!-- EMAIL -->
+
+    <div
+        style="
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:13px;
+            line-height:18px;
+        ">
+
+        <a
+            id="sigEmail"
+            href="#"
+            style="
+                color:#35363A;
+                text-decoration:none;
+            ">
+            yourname@ceoempowers.org
+        </a>
+
+    </div>
+
+
+    <!-- SPACING -->
+
+    <div style="height:12px; line-height:12px;">
+        &nbsp;
+    </div>
+
+
+    <!-- WEBSITE -->
+
+    <div
+        style="
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:14px;
+            font-weight:bold;
+            line-height:20px;
+        ">
+
+        <a
+            href="https://www.ceoempowers.org"
+            target="_blank"
+            style="
+                color:#EA1956;
+                text-decoration:none;
+            ">
+            ceoempowers.org
+        </a>
+
+    </div>
+
+
+    <!-- SPACING -->
+
+    <div style="height:13px; line-height:13px;">
+        &nbsp;
+    </div>
+
+
+    <!-- SOCIAL ICONS -->
+
+    <table
+        cellpadding="0"
+        cellspacing="0"
+        border="0">
+
+    <tr>
+
+
+        <!-- FACEBOOK -->
+
+        <td style="padding-right:8px;">
+
+            <a
+                href="http://facebook.com/ceocap"
+                target="_blank"
+                title="Facebook"
+                style="
+                    text-decoration:none;
+                    color:#ffffff;
+                ">
+
+                <span
+                    style="
+                        display:inline-block;
+                        width:24px;
+                        height:24px;
+                        line-height:24px;
+                        text-align:center;
+                        background:#EA1956;
+                        border-radius:50%;
+                        color:#ffffff;
+                        font-family:Arial,sans-serif;
+                        font-size:15px;
+                        font-weight:bold;
+                    ">
+                    f
+                </span>
+
+            </a>
+
+        </td>
+
+
+        <!-- LINKEDIN -->
+
+        <td style="padding-right:8px;">
+
+            <a
+                href="https://www.linkedin.com/company/commission-on-economic-opportunity/"
+                target="_blank"
+                title="LinkedIn"
+                style="
+                    text-decoration:none;
+                    color:#ffffff;
+                ">
+
+                <span
+                    style="
+                        display:inline-block;
+                        width:24px;
+                        height:24px;
+                        line-height:24px;
+                        text-align:center;
+                        background:#7B4198;
+                        border-radius:50%;
+                        color:#ffffff;
+                        font-family:Arial,sans-serif;
+                        font-size:11px;
+                        font-weight:bold;
+                    ">
+                    in
+                </span>
+
+            </a>
+
+        </td>
+
+
+        <!-- INSTAGRAM -->
+
+        <td>
+
+            <a
+                href="https://www.instagram.com/ceotroy/"
+                target="_blank"
+                title="Instagram"
+                style="
+                    text-decoration:none;
+                    color:#ffffff;
+                ">
+
+                <span
+                    style="
+                        display:inline-block;
+                        width:24px;
+                        height:24px;
+                        line-height:24px;
+                        text-align:center;
+                        background:#009CDB;
+                        border-radius:50%;
+                        color:#ffffff;
+                        font-family:Arial,sans-serif;
+                        font-size:15px;
+                        font-weight:bold;
+                    ">
+                    ◎
+                </span>
+
+            </a>
+
+        </td>
+
+
+    </tr>
+
+    </table>
+
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+
+<button
+    class="copy-button"
+    onclick="copySignature()">
+    Copy Email Signature
+</button>
+
+<span id="copyMessage"></span>
+
+
+<div class="note">
+
+<strong>How to use:</strong>
+Enter your information, select your location, then click
+<strong>Copy Email Signature</strong>. Paste the result into your Outlook
+signature settings.
+
+<br><br>
+
+The social media icons in this test are temporary HTML versions.
+They are already linked correctly. Final branded icon images can be substituted later.
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+function updateSignature() {
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const title =
+        document.getElementById("title").value.trim();
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+    const extension =
+        document.getElementById("extension").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const locationSelect =
+        document.getElementById("location");
+
+    const selectedOption =
+        locationSelect.options[
+            locationSelect.selectedIndex
+        ];
+
+    const locationName =
+        selectedOption.value;
+
+    const address =
+        selectedOption.getAttribute("data-address") || "";
+
+
+    /* NAME */
+
+    document.getElementById("sigName").textContent =
+        name || "Your Name";
+
+
+    /* TITLE */
+
+    document.getElementById("sigTitle").textContent =
+        title || "Your Job Title";
+
+
+    /* PHONE */
+
+    document.getElementById("sigPhone").textContent =
+        phone || "(518) 272-6012";
+
+
+    /* EXTENSION */
+
+    if (extension) {
+
+        document.getElementById("sigExtension").textContent =
+            " ext. " + extension;
+
+    } else {
+
+        document.getElementById("sigExtension").textContent =
+            "";
+
+    }
+
+
+    /* CLICKABLE PHONE LINK */
+
+    if (phone) {
+
+        const phoneDigits =
+            phone.replace(/\D/g, "");
+
+        let telLink =
+            "tel:" + phoneDigits;
+
+        if (extension) {
+            telLink += ";ext=" + extension.replace(/\D/g, "");
+        }
+
+        document.getElementById("sigPhoneLink").href =
+            telLink;
+
+    } else {
+
+        document.getElementById("sigPhoneLink").href =
+            "#";
+
+    }
+
+
+    /* EMAIL */
+
+    document.getElementById("sigEmail").textContent =
+        email || "yourname@ceoempowers.org";
+
+
+    if (email) {
+
+        document.getElementById("sigEmail").href =
+            "mailto:" + email;
+
+    } else {
+
+        document.getElementById("sigEmail").href =
+            "#";
+
+    }
+
+
+    /* LOCATION */
+
+    if (locationName) {
+
+        document.getElementById("sigLocation").textContent =
+            locationName;
+
+        document.getElementById("sigAddress").textContent =
+            address;
+
+        document.getElementById("locationBlock").style.display =
+            "block";
+
+        document.getElementById("locationSpacing").style.display =
+            "block";
+
+    } else {
+
+        document.getElementById("sigLocation").textContent =
+            "";
+
+        document.getElementById("sigAddress").textContent =
+            "";
+
+        document.getElementById("locationBlock").style.display =
+            "none";
+
+        document.getElementById("locationSpacing").style.display =
+            "none";
+
+    }
+
+}
+
+
+
+async function copySignature() {
+
+    const signature =
+        document.getElementById("signature");
+
+    const message =
+        document.getElementById("copyMessage");
+
+
+    try {
+
+        const html =
+            signature.innerHTML;
+
+        const plainText =
+            signature.innerText;
+
+
+        const htmlBlob =
+            new Blob(
+                [html],
+                { type: "text/html" }
+            );
+
+        const textBlob =
+            new Blob(
+                [plainText],
+                { type: "text/plain" }
+            );
+
+
+        const clipboardItem =
+            new ClipboardItem({
+
+                "text/html": htmlBlob,
+
+                "text/plain": textBlob
+
+            });
+
+
+        await navigator.clipboard.write(
+            [clipboardItem]
+        );
+
+
+        message.textContent =
+            "Signature copied!";
+
+    }
+
+    catch(error) {
+
+        /*
+        FALLBACK FOR BROWSERS
+        THAT DO NOT SUPPORT ClipboardItem
+        */
+
+        const range =
+            document.createRange();
+
+        range.selectNodeContents(
+            signature
+        );
+
+
+        const selection =
+            window.getSelection();
+
+        selection.removeAllRanges();
+
+        selection.addRange(
+            range
+        );
+
+
+        document.execCommand(
+            "copy"
+        );
+
+
+        selection.removeAllRanges();
+
+
+        message.textContent =
+            "Signature copied!";
+
+    }
+
+}
+
+
+</script>
+
+</body>
+</html>
