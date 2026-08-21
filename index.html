@@ -182,10 +182,7 @@ select {
 
 
 
-<!-- ========================= -->
 <!-- EMPLOYEE INFORMATION FORM -->
-<!-- ========================= -->
-
 
 <div class="form-grid">
 
@@ -349,10 +346,7 @@ select {
 
 
 
-<!-- ================= -->
 <!-- SIGNATURE PREVIEW -->
-<!-- ================= -->
-
 
 <div class="preview-title">
     Your Signature
@@ -366,10 +360,8 @@ select {
 
 
 <!--
-IMPORTANT:
-Everything inside this div is intentionally built
-with old-style tables and inline formatting because
-Outlook handles that much more reliably.
+EMAIL SIGNATURE
+Built with nested tables and inline styles for Outlook compatibility.
 -->
 
 
@@ -391,9 +383,7 @@ Outlook handles that much more reliably.
 
 
 
-<!-- ================= -->
-<!-- LEFT: CEO LOGO -->
-<!-- ================= -->
+<!-- LEFT COLUMN: CEO LOGO + TAGLINE GRAPHIC -->
 
 
 <td
@@ -406,6 +396,33 @@ Outlook handles that much more reliably.
 >
 
 
+<table
+    role="presentation"
+    cellpadding="0"
+    cellspacing="0"
+    border="0"
+    align="center"
+    style="
+        border-collapse:collapse;
+        border-spacing:0;
+        margin:0 auto;
+    "
+>
+
+
+<!-- CEO LOGO -->
+
+
+<tr>
+
+<td
+    align="center"
+    style="
+        padding:0;
+        text-align:center;
+    "
+>
+
     <a
         href="https://www.ceoempowers.org"
         target="_blank"
@@ -414,7 +431,6 @@ Outlook handles that much more reliably.
             border:0;
         "
     >
-
 
         <img
             src="https://www.ceoempowers.org/wp-content/uploads/2023/08/ceo-logo-circle.png"
@@ -426,23 +442,95 @@ Outlook handles that much more reliably.
                 width:145px;
                 max-width:145px;
                 height:auto;
-                margin:0;
+                margin:0 auto;
                 padding:0;
                 border:0;
             "
         >
 
+    </a>
+
+</td>
+
+</tr>
+
+
+
+<!-- SPACE BETWEEN LOGO AND TAGLINE -->
+
+
+<tr>
+
+<td
+    height="12"
+    style="
+        height:12px;
+        padding:0;
+        font-size:1px;
+        line-height:12px;
+    "
+>
+    &nbsp;
+</td>
+
+</tr>
+
+
+
+<!-- TAGLINE / MISSION GRAPHIC -->
+
+
+<tr>
+
+<td
+    align="center"
+    style="
+        padding:0;
+        text-align:center;
+    "
+>
+
+    <a
+        href="https://www.ceoempowers.org"
+        target="_blank"
+        style="
+            text-decoration:none;
+            border:0;
+        "
+    >
+
+        <img
+            src="tagline.png"
+            alt="Changing Lives. Improving Our Community."
+            width="160"
+            height="60"
+            border="0"
+            style="
+                display:block;
+                width:160px;
+                max-width:160px;
+                height:60px;
+                margin:0 auto;
+                padding:0;
+                border:0;
+            "
+        >
 
     </a>
+
+</td>
+
+</tr>
+
+
+</table>
 
 
 </td>
 
 
 
-<!-- ======================== -->
-<!-- OUTLOOK-SAFE PURPLE LINE -->
-<!-- ======================== -->
+<!-- OUTLOOK-SAFE PURPLE DIVIDER -->
 
 
 <td
@@ -464,9 +552,7 @@ Outlook handles that much more reliably.
 
 
 
-<!-- ======================= -->
-<!-- RIGHT: CONTACT DETAILS -->
-<!-- ======================= -->
+<!-- RIGHT COLUMN: EMPLOYEE INFORMATION -->
 
 
 <td
@@ -476,12 +562,6 @@ Outlook handles that much more reliably.
         vertical-align:middle;
     "
 >
-
-
-<!--
-Nested table used so Outlook keeps
-all of the vertical spacing.
--->
 
 
 <table
@@ -551,7 +631,7 @@ all of the vertical spacing.
 
 
 
-<!-- SPACER BEFORE LOCATION -->
+<!-- OPTIONAL LOCATION SPACING -->
 
 
 <tr
@@ -976,9 +1056,7 @@ all of the vertical spacing.
 
 
 
-<!-- =========== -->
 <!-- COPY BUTTON -->
-<!-- =========== -->
 
 
 <button
@@ -994,9 +1072,7 @@ all of the vertical spacing.
 
 
 
-<!-- ==================== -->
 <!-- OUTLOOK INSTRUCTIONS -->
-<!-- ==================== -->
 
 
 <div class="instructions">
@@ -1102,9 +1178,7 @@ all of the vertical spacing.
 
 
 
-<!-- ================= -->
 <!-- GENERATOR SCRIPT -->
-<!-- ================= -->
 
 
 <script>
@@ -1154,10 +1228,7 @@ function updateSignature() {
 
 
 
-    /* ================= */
     /* NAME */
-    /* ================= */
-
 
     document
         .getElementById("sigName")
@@ -1166,10 +1237,7 @@ function updateSignature() {
 
 
 
-    /* ================= */
     /* JOB TITLE */
-    /* ================= */
-
 
     document
         .getElementById("sigTitle")
@@ -1178,10 +1246,7 @@ function updateSignature() {
 
 
 
-    /* ================= */
     /* PHONE */
-    /* ================= */
-
 
     const displayPhone =
         phoneValue || "(518) 272-6012";
@@ -1194,10 +1259,7 @@ function updateSignature() {
 
 
 
-    /* ================= */
     /* EXTENSION */
-    /* ================= */
-
 
     document
         .getElementById("sigExtension")
@@ -1208,10 +1270,7 @@ function updateSignature() {
 
 
 
-    /* ================= */
     /* CLICKABLE PHONE */
-    /* ================= */
-
 
     const phoneDigits =
         displayPhone.replace(/\D/g, "");
@@ -1244,10 +1303,7 @@ function updateSignature() {
 
 
 
-    /* ================= */
     /* EMAIL */
-    /* ================= */
-
 
     const displayEmail =
         emailValue ||
@@ -1267,10 +1323,7 @@ function updateSignature() {
 
 
 
-    /* ================= */
     /* LOCATION */
-    /* ================= */
-
 
     const selectedOption =
         locationSelect.options[
@@ -1367,9 +1420,7 @@ function updateSignature() {
 
 
 
-/* ===================== */
-/* LIVE PREVIEW LISTENERS */
-/* ===================== */
+/* LIVE PREVIEW */
 
 
 fullName.addEventListener(
@@ -1409,9 +1460,7 @@ locationSelect.addEventListener(
 
 
 
-/* ================= */
-/* COPY TO CLIPBOARD */
-/* ================= */
+/* COPY SIGNATURE */
 
 
 document
@@ -1433,10 +1482,7 @@ document
                 );
 
 
-            /*
-            First try modern clipboard copying.
-            This preserves HTML formatting.
-            */
+            /* MODERN HTML CLIPBOARD METHOD */
 
 
             try {
@@ -1508,18 +1554,13 @@ document
 
             } catch (error) {
 
-                /*
-                Continue to the fallback
-                copying method below.
-                */
+                /* Use fallback below */
 
             }
 
 
 
-            /*
-            Fallback copying method.
-            */
+            /* FALLBACK COPY METHOD */
 
 
             try {
@@ -1587,9 +1628,7 @@ document
 
 
 
-/* ================= */
-/* INITIALIZE PREVIEW */
-/* ================= */
+/* INITIAL PREVIEW */
 
 
 updateSignature();
